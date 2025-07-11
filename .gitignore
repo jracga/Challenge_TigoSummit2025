@@ -1,0 +1,14 @@
+# Ignora entorno virtual
+venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos de VSCode (opcional)
+.vscode/
+
+# Archivos de sistema (Windows/macOS)
+.DS_Store
+Thumbs.db
