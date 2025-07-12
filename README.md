@@ -1,55 +1,173 @@
-# Challenge_TigoSummit2025
-API para Mocks de Servicios REST
+# Mock API REST - Tigo Summit 2025
 
-# Mock API REST - Proyecto Challenge Tigo Summit 2025
+Este proyecto consiste en una API REST desarrollada con Flask que permite **configurar y gestionar mocks de endpoints REST**, simulando servicios externos y devolviendo respuestas personalizadas basadas en parámetros.
 
-Este proyecto es una API para configurar y gestionar mocks de endpoints REST.  
-Permite simular servicios externos devolviendo respuestas personalizadas.
+Es útil para pruebas, desarrollo de frontend sin backend, o simulación de microservicios en entornos desacoplados.
 
 ---
 
-## Requisitos
+## 📌 Objetivo del Proyecto
 
-- Python 3.8 o superior
-- Entorno virtual (recomendado)
-- Paquetes listados en `requirements.txt`
+Desarrollar una API que permita:
+
+-  Configurar dinámicamente respuestas simuladas para rutas HTTP.
+-  Simular el comportamiento de servicios externos (GET, POST, PUT, DELETE).
+-  Visualizar, actualizar y eliminar configuraciones de mocks.
+-  Responder de forma dinámica según los parámetros enviados por el cliente.
 
 ---
 
-## Instalación
+## ⚙️ Tecnologías Utilizadas
 
-1. Clona el repositorio  
-    ```
-        git clone <url-del-repositorio>
-        cd <nombre-del-proyecto>  
-   ```
+- **Lenguaje:** Python 3.12
+- **Framework:** Flask 3.x
+- **Formato de datos:** JSON
+- **Herramientas de prueba:** Postman, cURL
 
-2. Crea y activa el entorno virtual  
-    ```
-        python -m venv venv
-        # Windows
-        .\venv\Scripts\activate
-        # Linux/Mac
-        source venv/bin/activate
-    ```
+---
 
-3. Instala las dependencias  
+## 📁 Estructura del Proyecto
 
-    ```
-        pip install -r requirements.txt
-    ```
+```
+Challenge_TigoSummit2025/
+├── app.py                  # Punto de entrada de la aplicación Flask
+├── routes/
+│   └── mock_routes.py      # Definición de rutas para gestión y ejecución de mocks
+├── mocks/
+│   ├── manager.py          # Lógica de almacenamiento y persistencia de configuraciones
+│   └── mock_handler.py     # Lógica para seleccionar el mock correcto
+├── data/
+│   └── mocks.json          # Archivo de configuración de mocks persistente
+├── requirements.txt        # Dependencias del proyecto
+└── README.md               # Este archivo
+```
 
-4. USO:
-Ejecuta la aplicación:  
+---
 
-    ```
-        python app.py
-    ```
+## 🚀 Instalación y Ejecución
 
+### 1. Clonar el repositorio
+```bash
+git clone <url-del-repo>
+cd Challenge_TigoSummit2025
+```
 
-5. Endpoints principales  
-    * POST /mocks - Registrar una configuración de mock
+### 2. Crear y activar entorno virtual
+```bash
+python -m venv venv
+# Activar en Windows
+.
+env\Scripts ctivate
+# Activar en Linux/Mac
+source venv/bin/activate
+```
 
-    * GET /mocks - Listar mocks registrados
+### 3. Instalar dependencias
+```bash
+pip install -r requirements.txt
+```
 
-    * GET|POST|PUT|DELETE /mock/<path> - Endpoint genérico para simular la respuesta configurada
+### 4. Ejecutar la API
+```bash
+python app.py
+```
+
+La API estará corriendo en: `http://localhost:5000`
+
+---
+
+## 📮 Endpoints principales
+
+### ▶️ Crear un mock
+**POST /mocks**
+
+```json
+{
+  "path": "/api/saludo",
+  "method": "GET",
+  "params": {
+    "lang": "es"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "msg": "¡Hola!"
+    }
+  }
+}
+```
+
+### 📜 Listar mocks
+**GET /mocks**
+
+---
+
+### ✏️ Actualizar un mock
+**PUT /mocks/{id}**
+
+```json
+{
+  "path": "/api/saludo",
+  "method": "GET",
+  "params": {
+    "lang": "es"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "msg": "¡Hola actualizado!"
+    }
+  }
+}
+```
+
+### ❌ Eliminar un mock
+**DELETE /mocks/{id}**
+
+---
+
+### 🧪 Simular petición
+**GET /mock/api/saludo?lang=es**
+
+Devuelve:
+
+```json
+{
+  "msg": "¡Hola!"
+}
+```
+
+---
+
+## 🧠 Lógica del sistema
+
+1. Todas las configuraciones de mocks se almacenan en el archivo `data/mocks.json`.
+2. Cada configuración contiene:
+   - La ruta (`path`)
+   - El método (`method`)
+   - Parámetros esperados (`params`)
+   - La respuesta a devolver (`response`)
+3. Cuando un cliente accede a `/mock/<ruta>`, el sistema busca una coincidencia exacta y responde según lo configurado.
+
+---
+
+## 📋 Buenas Prácticas Implementadas
+
+- Código modular por responsabilidad (routes, lógica, almacenamiento)
+- Validación mínima de entrada
+- Buen manejo de errores básicos
+- Uso de UUIDs para identificar configuraciones
+- Uso de entorno virtual y archivo `requirements.txt`
+- Ignora `venv/` mediante `.gitignore`
+
+---
+
+## 📚 Posibles mejoras futuras
+
+- Validación de datos con `pydantic` o `marshmallow`
+- Soporte para respuesta basada en cuerpo o headers
+- Documentación Swagger/OpenAPI
+- Almacenamiento en base de datos (SQLite, MongoDB, etc.)
+- Interfaz gráfica para crear mocks
+
+---
