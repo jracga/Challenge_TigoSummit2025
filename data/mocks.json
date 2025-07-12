@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "path": "/api/saludo",
+    "method": "GET",
+    "params": {
+      "lang": "es"
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "msg": "\u00a1Mensaje actualizado!"
+      }
+    },
+    "id": "ffdcb34c-0345-462f-a9d9-d4173082d22f"
+  },
+  {
+    "path": "/api/saludo",
+    "method": "GET",
+    "params": {
+      "lang": "es"
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "msg": "\u00a1Hola, mundo!"
+      }
+    },
+    "id": "f70f742c-7bc9-48c2-aef5-f75b45b56ec1"
+  }
+]
