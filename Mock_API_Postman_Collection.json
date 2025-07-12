@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Mock API REST - Tigo Summit 2025",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "mock-api-tigo-summit"
+  },
+  "item": [
+    {
+      "name": "Crear mock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/api/saludo\",\n  \"method\": \"GET\",\n  \"params\": {\n    \"lang\": \"es\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"body\": {\n      \"msg\": \"\\u00a1Hola, mundo!\"\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/mocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "mocks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar mocks",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/mocks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "mocks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Editar mock",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/api/saludo\",\n  \"method\": \"GET\",\n  \"params\": {\n    \"lang\": \"es\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"body\": {\n      \"msg\": \"\\u00a1Mensaje actualizado!\"\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/mocks/{{mock_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "mocks",
+            "{{mock_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eliminar mock",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:5000/mocks/{{mock_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "mocks",
+            "{{mock_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Probar mock registrado",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/mock/api/saludo?lang=es",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "mock",
+            "api",
+            "saludo"
+          ],
+          "query": [
+            {
+              "key": "lang",
+              "value": "es"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "mock_id",
+      "value": "<reemplaza-con-el-id>"
+    }
+  ]
+}
