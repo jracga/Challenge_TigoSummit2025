@@ -20,7 +20,7 @@ Desarrollar una API que permita:
 ## ⚙️ Tecnologías Utilizadas
 
 - **Lenguaje:** Python 3.12
-- **Framework:** Flask 3.x
+- **Framework:** Flask 3.1.1
 - **Formato de datos:** JSON
 - **Herramientas de prueba:** Postman, cURL
 
@@ -48,19 +48,23 @@ Challenge_TigoSummit2025/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/jracga/Challenge_TigoSummit2025.git
 cd Challenge_TigoSummit2025
 ```
 
 ### 2. Crear y activar entorno virtual
-```bash
-python -m venv venv
-# Activar en Windows
-.
-env\Scripts ctivate
-# Activar en Linux/Mac
-source venv/bin/activate
-```
+  ```bash
+    python -m venv venv
+    # Activar en Windows
+    .
+    env\Scripts ctivate
+    # Activar en Linux/Mac
+    source venv/bin/activate
+  ```
+Cuando termines de trabajar, puedes salir del entorno con:
+    ```
+    deactivate
+    ```
 
 ### 3. Instalar dependencias
 ```bash
